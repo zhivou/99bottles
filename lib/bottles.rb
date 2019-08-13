@@ -52,5 +52,3 @@ class Bottles
 
   end
 end
-
-puts Bottles.new.song

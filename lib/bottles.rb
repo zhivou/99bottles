@@ -4,13 +4,28 @@ class Bottles
   # You can pass bottle number
   #
   def verse(bottle)
-    "#{bottle} bottle#{"s" if bottle > 1} of beer on the wall, #{bottle} bottle#{"s" if bottle > 1} of beer." +
-        "\nTake #{bottle == 1? "it" : "one"} down and pass it around, " + last_part(bottle) +
-        "\n"
+    first_part(bottle) + middle_part(bottle) + last_part(bottle) + "\n"
   end
 
   private
+  def first_part(bottle)
+    if bottle == 0
+      "No more bottles of beer on the wall, no more bottles of beer." + "\nGo to the store and buy some more, 99 bottles of beer on the wall."
+    else
+      "#{bottle} bottle#{"s" if bottle > 1} of beer on the wall, #{bottle} bottle#{"s" if bottle > 1} of beer."
+    end
+  end
+
+  def middle_part(bottle)
+    if bottle == 0
+      ""
+    else
+      "\nTake #{bottle == 1? "it" : "one"} down and pass it around, "
+    end
+  end
+
   def last_part(bottle)
+    return "" if bottle == 0
     if bottle == 1
       "no more bottles of beer on the wall."
     else

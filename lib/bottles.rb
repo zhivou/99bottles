@@ -7,6 +7,20 @@ class Bottles
     first_part(bottle) + middle_part(bottle) + last_part(bottle) + "\n"
   end
 
+  def verses(*bottle)
+    result = []
+    if bottle.is_a?(Array)
+      bottle.each do |b|
+        result << first_part(b) + middle_part(b) + last_part(b) + "\n"
+        result << "\n"
+      end
+    else
+      verse(bottle)
+    end
+    result.pop
+    result.join
+  end
+
   private
   def first_part(bottle)
     if bottle == 0
@@ -35,4 +49,4 @@ class Bottles
   end
 end
 
-puts Bottles.new.verse(99)
+#puts Bottles.new.verses(99, 98)

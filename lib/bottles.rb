@@ -10,7 +10,7 @@ class Bottles
   def verses(*bottle)
     result = []
     if bottle.is_a?(Array)
-      bottle.each do |b|
+      for b in bottle[bottle.length - 1]..bottle[0]
         result << first_part(b) + middle_part(b) + last_part(b) + "\n"
         result << "\n"
       end
@@ -18,7 +18,11 @@ class Bottles
       verse(bottle)
     end
     result.pop
-    result.join
+    result.reverse.join
+  end
+
+  def song
+    verses(99,0)
   end
 
   private
@@ -49,4 +53,4 @@ class Bottles
   end
 end
 
-#puts Bottles.new.verses(99, 98)
+puts Bottles.new.song
